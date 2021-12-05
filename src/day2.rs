@@ -1,14 +1,10 @@
 use std::fs::File;
 use std::io::{prelude::*, BufReader};
-use std::path::Path;
 use std::str::FromStr;
 
 pub fn run() {
     // read the inputs from file
     let movement_strings = read_file("inputs/day2.txt");
-
-    // instantiate new struct position with 0 values
-    let mut position = Position { x: 0, y: 0, aim: 0 };
 
     // cast the input lines into a single vector consisting of Movement structs Arr
     let movements: Vec<Movement> = movement_strings.iter().map(|l| new_movement(l)).collect();

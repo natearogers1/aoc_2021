@@ -26,7 +26,6 @@ pub fn run() {
 
 fn part1(lines: &Vec<i32>) -> i32 {
     let mut num_larger: i32 = 0;
-
     for window in lines.windows(2) {
         if window[1] > window[0] {
             num_larger += 1;

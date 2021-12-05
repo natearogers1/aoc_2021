@@ -23,7 +23,6 @@ struct Value {
 #[derive(Debug)]
 struct Board {
     grid: [[Value; 5]; 5],
-    solved: bool,
 }
 impl Board {
     fn from_window(window: &[String]) -> Self {
@@ -40,10 +39,7 @@ impl Board {
                 grid[row_num][column_num].number = *column_value
             }
         }
-        Board {
-            grid: grid,
-            solved: false,
-        }
+        Board { grid: grid }
     }
     fn mark_number(&mut self, number: &u32) {
         for row in &mut (self).grid {
@@ -132,4 +128,27 @@ fn read_file(file: &str) -> Vec<String> {
         .lines()
         .map(|l| l.expect("could not parse line"))
         .collect()
+}
+#[cfg(test)]
+mod unit_test {
+    use crate::day4::{find_boards, run};
+    extern crate test;
+    use test::Bencher;
+
+    use super::read_file;
+
+    #[test]
+    #[rustfmt::skip]
+    fn test_capture_6_by_6() {
+        // doesn't work, maybe dynamically find the window size in find_boards based on whitespaces?
+        let inp = read_file("inputs/test/day4.txt");
+        let boards =  find_boards(&inp);
+        println!("{:?}", &boards);
+        assert_eq!(boards.iter().count(), 1);
+    }
+
+    #[bench]
+    fn bench_run(b: &mut Bencher) {
+        b.iter(|| run())
+    }
 }

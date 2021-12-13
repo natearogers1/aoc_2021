@@ -2,9 +2,13 @@
 extern crate test;
 
 mod day1;
+mod day11;
+//mod day11_issue;
 mod day2;
 mod day4;
 mod day5;
+mod day7;
+mod day8;
 
 fn main() {
     println!("\nday1:");
@@ -15,4 +19,11 @@ fn main() {
     day4::run();
     println!("\nday5:");
     day5::run();
+    println!("\nday7:");
+    day7::run();
+    //println!("\nday8:");
+    //day8::run();
+    println!("\nday11:");
+    day11::run();
+    //day11_issue::run()
 }

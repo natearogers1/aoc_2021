@@ -4,6 +4,7 @@ extern crate test;
 mod day1;
 mod day11;
 //mod day11_issue;
+mod day12;
 mod day2;
 mod day4;
 mod day5;
@@ -12,18 +13,19 @@ mod day8;
 
 fn main() {
     println!("\nday1:");
-    day1::run();
+    //day1::run();
     println!("\nday2:");
-    day2::run();
+    //day2::run();
     println!("\nday4:");
-    day4::run();
+    //day4::run();
     println!("\nday5:");
-    day5::run();
+    //day5::run();
     println!("\nday7:");
-    day7::run();
+    //day7::run();
     //println!("\nday8:");
     //day8::run();
     println!("\nday11:");
-    day11::run();
+    //day11::run();
     //day11_issue::run()
+    day12::run();
 }

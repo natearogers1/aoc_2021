@@ -3,10 +3,7 @@ use std::io::{prelude::*, BufReader};
 
 pub fn run() {
     let inputs = read_file("inputs/day12.txt");
-    part1(inputs)
-}
 
-fn part1(inputs: Vec<String>) {
     let mut finished_paths: Vec<Vec<String>> = vec![];
     let connections: Vec<Vec<&str>> = inputs.iter().map(|x| x.split("-").collect()).collect();
 

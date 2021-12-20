@@ -1,10 +1,12 @@
 #![feature(test)]
+extern crate itertools;
 extern crate test;
 
 mod day1;
 mod day11;
 //mod day11_issue;
 mod day12;
+mod day13;
 mod day2;
 mod day4;
 mod day5;
@@ -27,5 +29,6 @@ fn main() {
     println!("\nday11:");
     //day11::run();
     //day11_issue::run()
-    day12::run();
+    //day12::run();
+    day13::run();
 }

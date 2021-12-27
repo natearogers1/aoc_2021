@@ -11,12 +11,12 @@ pub fn run() {
     println!("part1: {}", part1);
     let part2 = part2(&init_chain, &transforms);
 }
-fn part2(init_chain: &String, transforms: &Vec<Transform>) -> i32 {
+fn part2(init_chain: &String, transforms: &Vec<Transform>) -> i128 {
     let mut letter_map = HashMap::new();
     for char in init_chain.chars() {
-        letter_map.insert(char.to_string(), 1);
+        *letter_map.entry(char.to_string()).or_insert(0) += 1;
     }
-
+    println!("{:?}", letter_map);
     let mut final_map = HashMap::new();
     // initial map population
     for (f, l) in init_chain.split("").into_iter().tuple_windows() {
@@ -25,8 +25,8 @@ fn part2(init_chain: &String, transforms: &Vec<Transform>) -> i32 {
         }
         *final_map.entry(f.to_owned() + l).or_insert(0) += 1;
     }
-    for i in 0..3 {
-        println!("{:?}", final_map);
+    for i in 0..40 {
+        //println!("{:?}", final_map);
 
         let mut new_map: HashMap<String, i128> = HashMap::new();
         for (pair, count) in &final_map {
@@ -47,18 +47,13 @@ fn part2(init_chain: &String, transforms: &Vec<Transform>) -> i32 {
             *final_map.entry(pair.to_string()).or_insert(0) += count;
         }
     }
-    let mut letter_map = HashMap::new();
-    for (pair, count) in &final_map {
-        let mut chars = pair.chars();
-        while let Some(c) = chars.next() {
-            *letter_map.entry(c).or_insert(0) += count
-        }
-    }
+
     let most_char = letter_map.iter().max_by(|x, y| x.1.cmp(y.1)).unwrap();
     let least_char = letter_map.iter().min_by(|x, y| x.1.cmp(y.1)).unwrap();
 
+    println!("{:?}", letter_map);
     println!("{:?}", most_char.1 - least_char.1);
-    return 1;
+    return most_char.1 - least_char.1;
 }
 
 fn part1(init_chain: &String, transforms: &Vec<Transform>) -> i32 {
